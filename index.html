@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="lock">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aanya’s Birthday Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+:root{--s1:#ffc6e6;--s2:#b9a4ff;--s3:#8fd3ff;--ink:#2a1a5e;--mut:#4f3f88;--glass:rgba(255,255,255,.88);--field:rgba(255,255,255,.7);--acc:#7c4dff;--accink:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s1:#140a35;--s2:#3a1670;--s3:#b43a8a;--ink:#fff;--mut:#d6c8ff;--glass:rgba(26,12,62,.88);--field:rgba(255,255,255,.1);--acc:#b99bff;--accink:#1a0f3d;color-scheme:dark}}
+:root[data-theme="dark"]{--s1:#140a35;--s2:#3a1670;--s3:#b43a8a;--ink:#fff;--mut:#d6c8ff;--glass:rgba(26,12,62,.88);--field:rgba(255,255,255,.1);--acc:#b99bff;--accink:#1a0f3d;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--s2);scroll-snap-type:y proximity;scroll-behavior:smooth;overflow-x:hidden;overscroll-behavior-y:none;-webkit-overflow-scrolling:touch}
+html.lock{overflow:hidden}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:linear-gradient(180deg,var(--s1),var(--s2) 55%,var(--s3)) fixed;color:var(--ink);font:400 1.05rem/1.55 Outfit,system-ui,sans-serif}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;contain:strict;transform:translateZ(0)}
+section{position:fixed;inset:0;z-index:1;display:flex;justify-content:center;align-items:center;padding:1.2rem;opacity:0;visibility:hidden;pointer-events:none;will-change:transform,opacity;perspective:1000px}
+.hero>div,.card{pointer-events:auto}
+#spacer{height:720svh;position:relative;pointer-events:none}
+.stop{position:absolute;left:0;width:100%;height:1px;scroll-snap-stop:always}
+.stop:nth-child(1){top:0;scroll-snap-align:start}
+.stop:nth-child(2){top:50%;scroll-snap-align:center}
+.stop:nth-child(3){top:100%;scroll-snap-align:end}
+.hero{align-items:flex-start;padding-top:8vh;text-align:center}
+.hero>div{width:100%;max-width:36rem}
+.kick{margin:0 0 .4rem;color:var(--ink);font-weight:600;text-shadow:0 1px 12px var(--s1),0 0 3px var(--s1)}
+h1{margin:0;font:800 clamp(2.6rem,13vw,5.6rem)/1 Unbounded,"Trebuchet MS",sans-serif}
+#nm{display:block;background:linear-gradient(100deg,#ff4f9a,#ffa63d,#ffe85a,#4fe0a8,#3cb9ff,#9b7bff,#ff4f9a);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 7s linear infinite;filter:drop-shadow(0 6px 20px rgba(120,60,200,.4))}
+@keyframes shim{to{background-position:-300% 0}}
+h1 small{display:block;margin-top:.6rem;font:600 clamp(1.1rem,5vw,1.7rem) Outfit,sans-serif;letter-spacing:.04em;text-shadow:0 1px 12px var(--s1),0 0 3px var(--s1)}
+.age{display:inline-block;margin-top:.8rem;padding:.25rem 1rem;border-radius:99px;background:var(--acc);color:var(--accink);font-weight:600}
+.sub{margin:.8rem auto 0;max-width:22rem;color:var(--ink);font-weight:600;text-shadow:0 1px 14px var(--s1),0 0 4px var(--s1)}
+.skip{margin-top:1rem;padding:.6rem 1.2rem;border:2px solid var(--acc);border-radius:99px;background:var(--glass);color:var(--ink);font:600 .95rem Outfit,sans-serif;cursor:pointer}
+.hint{position:absolute;bottom:3vh;left:0;right:0;text-align:center;color:var(--mut);animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+.r{opacity:0;transform:translateY(24px)}
+body.open .r{opacity:1;transform:none;transition:all .9s cubic-bezier(.2,.8,.2,1) calc(var(--d,0s) + 1.4s)}
+.card{position:relative;width:100%;max-width:31rem;border-radius:32px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 30px 80px rgba(45,15,95,.45),0 0 0 1px rgba(255,255,255,.6) inset;transform-style:preserve-3d}
+.card::after{content:"";position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:44%;height:14px;background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 35%,transparent),transparent);border-radius:0 0 14px 14px;filter:blur(2px);pointer-events:none}
+.sc{padding:1.3rem 1.2rem;max-height:84svh;overflow-y:auto;border-radius:32px;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.billboard-badge{display:inline-block;margin-bottom:.55rem;padding:.26rem .9rem;border-radius:99px;background:var(--acc);color:var(--accink);font:600 .78rem/1.2 Outfit,sans-serif;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 2px 10px rgba(124,77,255,.3)}
+.chip-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .85rem;border-radius:99px;background:var(--field);border:1.5px solid var(--acc);color:var(--ink);font:600 .84rem Outfit,sans-serif;text-decoration:none;transition:transform .15s,background .15s}
+.chip-btn:active{transform:scale(.96);background:var(--acc);color:var(--accink)}
+.card-nav{display:flex;gap:.6rem;margin-top:1.1rem}
+.nav-next-btn{flex:1;padding:.85rem 1rem;border:0;border-radius:99px;background:linear-gradient(100deg,#ff4f9a,#9b7bff,#3cb9ff);background-size:200% 100%;color:#fff;font:600 .98rem Unbounded,Outfit,sans-serif;cursor:pointer;box-shadow:0 8px 22px rgba(124,77,255,.35);transition:transform .15s}
+.nav-next-btn:active{transform:scale(.97)}
+.nav-prev-btn{padding:.8rem 1rem;border:1.5px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:99px;background:var(--field);color:var(--ink);font:600 .88rem Outfit,sans-serif;cursor:pointer}
+.nav-prev-btn:active{transform:scale(.97)}
+.swipe-hint{margin-top:.45rem;text-align:center;font-size:.78rem;color:var(--mut)}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;background:conic-gradient(from var(--a),#ff5fa2,#ffe066,#5fd4a0,#2bb3e6,#a78bff,#ff5fa2);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 6s linear infinite;pointer-events:none}
+@keyframes spin{to{--a:360deg}}
+h2{margin:0 0 .8rem;font:600 1.35rem Unbounded,sans-serif}
+.row{padding:.55rem 0}.row+.row{border-top:1px solid color-mix(in srgb,var(--ink) 15%,transparent)}
+.row b{display:block;color:var(--acc)}
+a{color:var(--acc);font-weight:600}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.9rem}
+.count div{padding:.6rem .2rem;border-radius:16px;background:var(--field);text-align:center}
+.count strong{display:block;font:600 1.5rem Unbounded,sans-serif}
+.count span{font-size:.8rem;color:var(--mut)}
+form{display:grid;gap:.7rem}
+label,legend{font-weight:600}
+input[type=text],select,textarea{width:100%;margin-top:.3rem;padding:.6rem .9rem;font:inherit;color:var(--ink);background:var(--field);border:2px solid transparent;border-radius:16px}
+textarea{min-height:3.2rem;resize:vertical}
+fieldset{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+legend{grid-column:1/-1;padding:0;margin-bottom:.3rem;float:left;width:100%}
+.pill{display:flex;justify-content:center;padding:.55rem .4rem;border-radius:16px;background:var(--field);border:2px solid transparent;text-align:center;font-weight:400;cursor:pointer}
+.pill input{position:absolute;opacity:0}
+.pill:has(input:checked){border-color:var(--acc);font-weight:600}
+:focus-visible,input:focus,select:focus,textarea:focus{outline:3px solid var(--acc);outline-offset:2px}
+.cta{padding:1rem;border:0;border-radius:99px;font:600 1.05rem Unbounded,sans-serif;color:#fff;cursor:pointer;background:linear-gradient(100deg,#ff4f9a,#9b7bff,#3cb9ff,#ff4f9a);background-size:300% 100%;animation:shim 5s linear infinite;box-shadow:0 10px 30px rgba(155,123,255,.5)}
+.cta:active{transform:scale(.97)}.cta:disabled{opacity:.6}
+.thanks{text-align:center}.thanks .big{font-size:3.4rem}
+.note{font-size:.9rem;color:var(--mut);margin:0}
+[hidden]{display:none!important}
+#gate{position:fixed;inset:0;z-index:20;display:grid;place-content:center;justify-items:center;gap:1.8rem;text-align:center;background:radial-gradient(circle at 50% 40%,var(--s2),var(--s1));transition:opacity .9s,visibility .9s}
+#gate.gone{opacity:0;pointer-events:none;visibility:hidden}
+#gate p{margin:0;font:600 1.1rem Outfit,sans-serif;color:var(--ink)}
+#open{width:9.5rem;height:9.5rem;border:0;border-radius:50%;cursor:pointer;font-size:3.6rem;background:conic-gradient(from var(--a),#ff5fa2,#ffe066,#5fd4a0,#2bb3e6,#a78bff,#ff5fa2);animation:spin 5s linear infinite,pulse 2.4s ease-in-out infinite;box-shadow:0 0 60px rgba(167,139,255,.85)}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.nogl .hero>div::before{content:"🦄";display:block;font-size:5rem}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="spacer">
+ <div class="stop"></div>
+ <div class="stop"></div>
+ <div class="stop"></div>
+</div>
+<main>
+ <section class="hero"><div>
+  <p class="kick r">you’re invited to</p>
+  <h1 class="r" style="--d:.15s"><span id="nm"></span><small>Birthday Party</small></h1>
+  <span class="age r" id="age" hidden style="--d:.3s"></span>
+  <p class="sub r" style="--d:.4s">A magical day of sparkles, cake and rainbows. Tap the sky for a little magic.</p>
+  <div class="r" style="--d:.55s;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+   <button class="skip" id="toDetails">See party details ↓</button>
+   <button class="skip" id="skip" style="opacity:.85">Jump to RSVP ↓</button>
+  </div>
+ </div><div class="hint r" style="--d:.8s">Swipe or scroll for details ↓</div></section>
+
+ <section><article class="card"><div class="sc">
+  <div class="billboard-badge">✨ Party Details ✨</div>
+  <h2>The celebration</h2>
+  <div class="row">
+    <b>🗓 When</b>
+    <span id="when"></span>
+    <div style="margin-top:.45rem"><a id="cal" target="_blank" rel="noopener" class="chip-btn">📅 Add to Calendar</a></div>
+  </div>
+  <div class="row">
+    <b>📍 Where</b>
+    <span id="venue"></span>
+    <div style="margin-top:.45rem"><a id="map" target="_blank" rel="noopener" class="chip-btn">🗺️ Open in Maps</a></div>
+  </div>
+  <div class="row">
+    <b>💌 Hosted by</b>
+    <span id="host"></span>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="card-nav">
+    <button type="button" class="nav-prev-btn" id="backToHero">↑ Back</button>
+    <button type="button" class="nav-next-btn" id="toRsvp">Next: RSVP ✨ ↓</button>
+  </div>
+  <div class="swipe-hint">Scroll down or tap Next to RSVP</div>
+ </div></article></section>
+
+ <section><article class="card" id="rsvp"><div class="sc">
+  <div class="billboard-badge">💌 Invitation RSVP 💌</div>
+  <h2>Will you join us?</h2>
+  <p class="note" id="by" style="margin-bottom:.9rem"></p>
+  <form id="form">
+   <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+   <fieldset><legend>Can you make it?</legend>
+    <label class="pill"><input type="radio" name="attending" value="Yes" checked>Yes, we’ll be there!</label>
+    <label class="pill"><input type="radio" name="attending" value="No">Sorry, can’t make it</label>
+   </fieldset>
+   <label id="guestsWrap">How many are coming, including you?
+    <select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+   <label>Allergies or a message (optional)<textarea name="notes"></textarea></label>
+   <button class="cta" type="submit" id="send">Send RSVP ✨</button>
+   <button type="button" class="nav-prev-btn" id="backToDetails" style="margin-top:.4rem;width:100%">↑ Back to party details</button>
+   <p class="note" id="status" role="status"></p>
+  </form>
+  <div class="thanks" id="thanks" hidden><div class="big">🌈</div><h2 id="tt"></h2><p id="tm"></p><p class="note" id="preview" hidden>Preview mode: this reply was not sent to anyone yet.</p></div>
+ </div></article></section>
+</main>
+<div id="gate"><p>Aanya’s invitation has arrived</p><button id="open" aria-label="Open the invitation">🦄</button><p>Tap to open the magic</p></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ====== EDIT THIS BLOCK ======
+const CONFIG = {
+  name: "Aanya",
+  age: "",                         // e.g. "5" shows a "Turning 6" badge
+  start: "2026-12-25T14:00",       // party start (local time)
+  hours: 3,
+  venue: "Add venue name",
+  address: "Add street address",
+  host: "Aanya’s family",
+  rsvpBy: "2026-12-05",
+  rsvpUrl: ""                      // paste your Google Apps Script web-app URL here
+};
+// =============================
+const $ = id => document.getElementById(id);
+const start = new Date(CONFIG.start), end = new Date(start.getTime() + CONFIG.hours * 36e5);
+const f = (d, o) => d.toLocaleString("en-CA", o);
+document.title = CONFIG.name + "’s Birthday Party";
+$("nm").textContent = CONFIG.name + "’s";
+if (CONFIG.age) { $("age").textContent = "Turning " + CONFIG.age; $("age").hidden = false; }
+$("when").textContent = f(start,{weekday:"long",month:"long",day:"numeric",year:"numeric"}) + ", " + f(start,{hour:"numeric",minute:"2-digit"}) + " to " + f(end,{hour:"numeric",minute:"2-digit"});
+$("venue").textContent = CONFIG.venue + (CONFIG.address ? ", " + CONFIG.address : "");
+$("host").textContent = CONFIG.host;
+$("map").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.venue + " " + CONFIG.address);
+$("by").textContent = "Please reply by " + new Date(CONFIG.rsvpBy + "T12:00").toLocaleDateString("en-CA",{month:"long",day:"numeric"}) + ".";
+const p2 = n => String(n).padStart(2, "0");
+const g = d => `${d.getFullYear()}${p2(d.getMonth()+1)}${p2(d.getDate())}T${p2(d.getHours())}${p2(d.getMinutes())}00`;
+$("cal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent(CONFIG.name + "’s Birthday Party") + "&dates=" + g(start) + "/" + g(end) + "&location=" + encodeURIComponent(CONFIG.venue + " " + CONFIG.address);
+
+function tick() {
+  const ms = start - new Date();
+  if (ms <= 0) { $("count").innerHTML = "<p style='grid-column:1/-1;margin:0;text-align:center'>The party is on. Thank you for celebrating!</p>"; return; }
+  const v = [[Math.floor(ms/864e5),"days"],[Math.floor(ms/36e5)%24,"hours"],[Math.floor(ms/6e4)%60,"mins"],[Math.floor(ms/1e3)%60,"secs"]];
+  $("count").innerHTML = v.map(([n,l]) => `<div><strong>${n}</strong><span>${l}</span></div>`).join("");
+}
+tick(); setInterval(tick, 1000);
+
+
+// ====== PANELS: scroll scrubs each section in and out, like flying through it ======
+const panels = [...document.querySelectorAll("main>section")].map((el, i, a) => ({el, c:[0,.5,1][i], w:[.34,.32,.34][i], first:i === 0, last:i === a.length-1, lastB:-1}));
+const bump = (p, c, w, flat = 0.12) => { const d = Math.max(0, Math.abs(p-c)-flat)/Math.max(.01, w-flat); return d >= 1 ? 0 : (u => u*u*(3-2*u))(1-d); };
+function updatePanels(p) {
+  let shift = 0;
+  panels.forEach((n, i) => {
+    let b = bump(p, n.c, n.w); if ((n.first && p < n.c) || (n.last && p > n.c)) b = 1;
+    if (Math.abs(b - n.lastB) > 0.001) {
+      n.lastB = b;
+      const st = n.el.style;
+      st.opacity = b;
+      if (i === 0) {
+        st.transform = "scale(" + (p < n.c ? .9+.1*b : 1+(1-b)*.5) + ")";
+      } else {
+        if (p < n.c) {
+          const ty = (1 - b) * 90;
+          const rx = (1 - b) * 22;
+          const sc = 0.82 + 0.18 * b;
+          st.transform = `perspective(900px) translateY(${ty.toFixed(1)}px) rotateX(${rx.toFixed(1)}deg) scale(${sc.toFixed(3)})`;
+        } else {
+          const ty = -(1 - b) * 60;
+          const sc = 1 + (1 - b) * 0.18;
+          st.transform = `perspective(900px) translateY(${ty.toFixed(1)}px) scale(${sc.toFixed(3)})`;
+        }
+      }
+      st.visibility = b < .01 ? "hidden" : "visible"; st.pointerEvents = b > .6 ? "auto" : "none";
+    }
+    shift += b*[-.16,-.02,-.02][i];
+  });
+  return shift;
+}
+
+// Cached scroll metrics to avoid layout reflows in the animation loop
+let maxScroll = 1, curScrollY = window.scrollY || 0;
+const updateMetrics = () => {
+  maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  curScrollY = window.scrollY || 0;
+};
+window.addEventListener("resize", updateMetrics, {passive: true});
+window.addEventListener("scroll", () => { curScrollY = window.scrollY || 0; }, {passive: true});
+updateMetrics();
+
+// ====== 3D WORLD (Three.js): the unicorn leads you through rainbow gates ======
+function makeUnicorn(THREE, GT) {
+  const V = (x, y, z) => new THREE.Vector3(x, y, z), Q = new THREE.Quaternion(), E = new THREE.Euler();
+  const T = (x, y, z, rz = 0, sx = 1, sy = 1, sz = 1) => new THREE.Matrix4().compose(V(x, y, z), Q.setFromEuler(E.set(0, 0, rz)), V(sx, sy, sz));
+  const TU = {value: new THREE.Vector4()};
+  const pearl = new THREE.MeshPhysicalMaterial({color:0xffffff, vertexColors:true, roughness:.45, metalness:0, clearcoat:1, clearcoatRoughness:.3, emissive:0xffb6e6, emissiveIntensity:.02});
+  const goldM = new THREE.MeshStandardMaterial({color:0xffe9a8, metalness:.85, roughness:.22, emissive:0xffc24d, emissiveIntensity:.4});
+  const darkM = new THREE.MeshPhysicalMaterial({color:0x1b1030, roughness:.15, clearcoat:1});
+  const whiteM = new THREE.MeshBasicMaterial({color:0xffffff});
+  const tint = g => { const n = g.attributes.normal, c = new Float32Array(n.count*3);
+    for (let i = 0; i < n.count; i++) { const t = Math.min(1, Math.max(0, n.getY(i)*.6+.55)); c[i*3] = .83+.17*t; c[i*3+1] = .74+.25*t; c[i*3+2] = 1; }
+    g.setAttribute("color", new THREE.BufferAttribute(c, 3)); };
+  const mk = (geo, m, mat, par) => { if (m) geo.applyMatrix4(m); if (mat === pearl) tint(geo); const o = new THREE.Mesh(geo, mat); par.add(o); return o; };
+  const spline = (pts, n = 24) => new THREE.SplineCurve(pts.map(([r, y]) => new THREE.Vector2(r, y))).getPoints(n);
+  const lathe = (pts, seg = 28, n) => new THREE.LatheGeometry(spline(pts, n).map(p => new THREE.Vector2(Math.max(.01, p.x), p.y)), seg);
+  const flow = m => { m.onBeforeCompile = s => { s.uniforms.uT = TU;
+    s.vertexShader = s.vertexShader.replace("#include <common>", "#include <common>\nuniform vec4 uT;")
+      .replace("#include <begin_vertex>", "#include <begin_vertex>\nfloat w=clamp(-position.x*1.2,0.,1.);w*=w;transformed.y+=sin(uT.x*3.+position.x*4.)*.12*w+uT.y*.45*w;transformed.z+=cos(uT.x*2.4+position.x*3.)*.1*w;"); }; return m; };
+  const strand = (pts, c, par, org, rad = .032) => { const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 18, rad, 5),
+      flow(new THREE.MeshStandardMaterial({color:c, emissive:c, emissiveIntensity:.5, roughness:.4}))); m.position.copy(org); par.add(m); };
+
+  const root = new THREE.Group(), body = new THREE.Group(), fore = new THREE.Group(), tail = new THREE.Group();
+  root.add(body); body.add(fore); body.add(tail); tail.position.set(-1.6, 1.95, 0);
+
+  // torso, neck, head
+  mk(lathe([[.02,-1.62],[.42,-1.5],[.7,-1.2],[.78,-.8],[.68,-.3],[.7,.2],[.76,.7],[.66,1.1],[.4,1.35],[.02,1.45]], 36, 40), T(0,1.58,0,-Math.PI/2,.82,1,.62), pearl, body);
+  mk(lathe([[.56,-.75],[.46,-.35],[.37,0],[.31,.4],[.27,.75]], 24, 16), T(1.44,2.37,0,-.8,1,1,.72), pearl, fore);
+  mk(lathe([[.01,0],[.2,.03],[.31,.15],[.35,.32],[.3,.52],[.23,.75],[.19,.9],[.15,.99],[.06,1.04],[.01,1.06]], 28, 24), T(1.98,2.9,0,-(Math.PI/2+.7),1.05,1,.82), pearl, fore);
+  const ball = new THREE.SphereGeometry(1, 12, 10);
+  [-1, 1].forEach(s => {
+    mk(ball.clone(), T(1.96,3.08,s*.13,.2,.07,.2,.05), pearl, fore);
+    mk(ball.clone(), T(2.26,2.74,s*.26,0,.07,.07,.07), darkM, fore);
+    mk(ball.clone(), T(2.29,2.77,s*.3,0,.02,.02,.02), whiteM, fore);
+    mk(ball.clone(), T(2.69,2.31,s*.085,0,.04,.03,.02), darkM, fore);
+  });
+
+  // horn
+  const hg = new THREE.ConeGeometry(.085, 1.05, 28, 24, true), pa = hg.attributes.position;
+  for (let i = 0; i < pa.count; i++) { const x = pa.getX(i), y = pa.getY(i), z = pa.getZ(i), k = 1+.16*Math.sin(Math.atan2(z, x)*4+y*16); pa.setXYZ(i, x*k, y, z*k); }
+  hg.computeVertexNormals();
+  const horn = new THREE.Mesh(hg, goldM); horn.position.set(2.69, 3.33, 0); horn.rotation.z = -.55; fore.add(horn);
+  const tip = new THREE.Object3D(); tip.position.set(0, .53, 0); horn.add(tip);
+  const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:GT, color:0xfff0a0, blending:THREE.AdditiveBlending, transparent:true, depthWrite:false}));
+  glow.scale.setScalar(1.4); tip.add(glow); tip.add(new THREE.PointLight(0xffd88a, .6, 8));
+
+  // legs
+  const legs = [[.9,.3,1],[.9,-.3,1],[-1.05,.3,0],[-1.05,-.3,0]].map(([x, z, front]) => {
+    const hip = new THREE.Group(), knee = new THREE.Group(); hip.position.set(x, 1.46, z); body.add(hip); knee.position.set(0, -.6, 0); hip.add(knee);
+    mk(lathe(front ? [[.1,-.6],[.12,-.4],[.16,-.15],[.19,0]] : [[.12,-.6],[.15,-.4],[.22,-.12],[.25,0]], 20, 12), null, pearl, hip);
+    mk(lathe([[.075,-.72],[.085,-.66],[.062,-.58],[.058,-.4],[.062,-.2],[.09,-.02],[.1,0]], 20, 14), null, pearl, knee);
+    mk(lathe([[.01,-.86],[.12,-.86],[.125,-.8],[.1,-.74],[.075,-.7]], 20, 8), null, goldM, knee);
+    return {hip, knee, front};
+  });
+
+  // rainbow tail and mane
+  const col = new THREE.Color();
+  for (let i = 0; i < 16; i++) { const L = 1.05+.45*((i*7)%5)/4, z = (i/15-.5)*.36; col.setHSL(i/15*.9, .8, .64);
+    strand([V(0,0,0), V(-.35*L,-.02,z*.6), V(-.75*L,-.35*L,z*1.2), V(-L,-L,z*1.8)], col.clone(), tail, V(0,0,0)); }
+  for (let i = 0; i < 16; i++) { const t = i/15, r = .5-.25*t, z = (i%2 ? 1 : -1)*(.05+.03*(i%3)), len = .95+.2*Math.sin(i*2); col.setHSL((t*.9+.5)%1, .8, .64);
+    strand([V(0,0,0), V(-.12,.03,z), V(-.32,-.12,z*1.5), V(-.5*len,-.42,z*2)], col.clone(), fore,
+      V(.9+t*1.08-.697*r, 1.85+t*1.05+.717*r, 0), .05); }
+
+  const rot = (g, a, px, py) => { g.rotation.z = a; g.position.set(px-(px*Math.cos(a)-py*Math.sin(a)), py-(px*Math.sin(a)+py*Math.cos(a)), 0); };
+  const update = (ph, spd, t) => {
+    TU.value.set(t, spd, 0, 0);
+    legs.forEach((l, i) => { const p = ph+[0,.7,2.6,3.3][i];
+      l.hip.rotation.z = Math.sin(p)*(.5+.15*spd)*(l.front ? 1 : .9);
+      l.knee.rotation.z = Math.max(0, Math.sin(p+1.3))*1.1*(l.front ? -1 : .8); });
+    body.position.y = Math.abs(Math.sin(ph+.4))*.09*(.4+spd);
+    body.rotation.z = Math.sin(ph)*.03;
+    rot(fore, Math.sin(ph+.6)*.04, .9, 1.85);
+    tail.rotation.z = Math.sin(ph*.5)*.05;
+  };
+  return {root, tip, tail, update};
+}
+
+function init3D(canvas, opts) {
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches, dm = matchMedia("(prefers-color-scheme: dark)");
+  const R = new THREE.WebGLRenderer(Object.assign({canvas, antialias:true, alpha:true, powerPreference:"high-performance"}, opts.gl));
+  R.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  const S = new THREE.Scene(), C = new THREE.PerspectiveCamera(50, 1, .1, 260), v = new THREE.Vector3(), col = new THREE.Color();
+  const M4 = new THREE.Matrix4(), Qn = new THREE.Quaternion(), Eu = new THREE.Euler(), Sc = new THREE.Vector3(), Ps = new THREE.Vector3();
+  const LT = 125;                                   // how far the unicorn runs
+  S.fog = new THREE.Fog(0x3a1670, 28, 100);
+  const theme = () => S.fog.color.set(dm.matches ? 0x3a1670 : 0xb9a4ff); theme();
+  if (dm.addEventListener) dm.addEventListener("change", theme);
+
+  S.add(new THREE.HemisphereLight(0xffd6f5, 0x5a3fa0, .75));
+  const sun = new THREE.DirectionalLight(0xffffff, .6); sun.position.set(4, 8, 6); S.add(sun);
+  const pk = new THREE.PointLight(0xff77c8, 1, 30), cy = new THREE.PointLight(0x66ddff, 1, 30); S.add(pk, cy);
+
+  const gc = document.createElement("canvas"); gc.width = gc.height = 64;
+  const gx = gc.getContext("2d"), gr = gx.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(.3, "rgba(255,255,255,.5)"); gr.addColorStop(1, "rgba(255,255,255,0)");
+  gx.fillStyle = gr; gx.fillRect(0, 0, 64, 64);
+  const GT = new THREE.CanvasTexture(gc);
+
+  // the unicorn leads the way
+  const U = makeUnicorn(THREE, GT), P = new THREE.Group(); P.add(U.root); U.root.rotation.y = Math.PI/2; S.add(P);
+  try {
+    const ec = document.createElement("canvas"); ec.width = 256; ec.height = 128;
+    const ex = ec.getContext("2d"), eg = ex.createLinearGradient(0, 0, 0, 128);
+    eg.addColorStop(0, "#9b7bff"); eg.addColorStop(.5, "#ffd6f5"); eg.addColorStop(1, "#6fa8ff"); ex.fillStyle = eg; ex.fillRect(0, 0, 256, 128);
+    ex.fillStyle = "#fff"; ex.fillRect(40, 20, 50, 20); ex.fillRect(170, 30, 40, 14);
+    const et = new THREE.CanvasTexture(ec); et.mapping = THREE.EquirectangularReflectionMapping;
+    const pmrem = new THREE.PMREMGenerator(R);
+    const env = pmrem.fromEquirectangular(et).texture;
+    pmrem.dispose();
+    et.dispose();
+    U.root.traverse(o => { const m = o.material; if (m && (m.isMeshPhysicalMaterial || m.metalness > .5)) { m.envMap = env; m.envMapIntensity = .45; m.needsUpdate = true; } });
+  } catch (e) {}
+  const sh = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 4.4), new THREE.MeshBasicMaterial({map:GT, color:0x240a4d, transparent:true, opacity:.5, depthWrite:false}));
+  sh.rotation.x = -Math.PI/2; sh.position.y = .03; P.add(sh);
+
+  // rainbow gates: reuse geometries and materials across all 11 gates
+  const GC = [0xff5fa2, 0xff9a3c, 0xffe066, 0x5fd4a0, 0x2bb3e6, 0x8a5cf6];
+  const gateMats = GC.map(c => new THREE.MeshBasicMaterial({color: c}));
+  const torusGeos = [0, 1, 2].map(j => new THREE.TorusGeometry(6.2+j*.55, .16, 8, 48));
+  const gates = [];
+  for (let i = 0; i < 11; i++) { const g = new THREE.Group();
+    for (let j = 0; j < 3; j++) g.add(new THREE.Mesh(torusGeos[j], gateMats[(i+j*2)%6]));
+    g.position.set(0, 2, -12-i*13); S.add(g); gates.push(g); }
+  const rg = new THREE.PlaneGeometry(3.4, 160, 6, 1), rc = new Float32Array(rg.attributes.position.count*3);
+  for (let i = 0; i < rg.attributes.position.count; i++) { col.setHSL((rg.attributes.position.getX(i)/3.4+.5)*.85, .9, .62); rc.set([col.r, col.g, col.b], i*3); }
+  rg.setAttribute("color", new THREE.BufferAttribute(rc, 3));
+  const road = new THREE.Mesh(rg, new THREE.MeshBasicMaterial({vertexColors:true, transparent:true, opacity:.4, blending:THREE.AdditiveBlending, depthWrite:false}));
+  road.rotation.x = -Math.PI/2; road.position.set(0, .02, -62); S.add(road);
+
+  // clouds (one instanced mesh) and floating gems
+  const NC = 40, cl = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 10, 8), new THREE.MeshStandardMaterial({color:0xffffff, emissive:0xffffff, emissiveIntensity:.4, roughness:1}), NC*3);
+  for (let i = 0; i < NC; i++) { const sea = i < 26, s = 1.2+Math.random()*1.8, sd = Math.random() < .5 ? -1 : 1;
+    const cx = sea ? sd*(2.5+Math.random()*14) : sd*(9+Math.random()*9), cyy = sea ? -2.6+Math.random()*.8 : Math.random()*11, cz = 15-Math.random()*165;
+    [[0,0,0,1],[.95,-.1,.2,.7],[-.9,-.15,0,.65]].forEach(([a, b, c, r], k) => { Ps.set(cx+a*s, cyy+b*s, cz+c*s); Sc.set(r*s, r*s*(sea ? .6 : .85), r*s); cl.setMatrixAt(i*3+k, M4.compose(Ps, Qn.identity(), Sc)); }); }
+  cl.frustumCulled = false; S.add(cl);
+  const NG = 36, gd = [], gm = new THREE.InstancedMesh(new THREE.OctahedronGeometry(.34), new THREE.MeshStandardMaterial({roughness:.25, metalness:.3, emissive:0x331a55, flatShading:true}), NG);
+  for (let i = 0; i < NG; i++) { col.setHSL(Math.random(), .85, .66); gm.setColorAt(i, col);
+    gd.push({x:(Math.random() < .5 ? -1 : 1)*(3+Math.random()*9), y:-1+Math.random()*10, z:15-Math.random()*160, p:Math.random()*6, s:.6+Math.random()*.9}); }
+  gm.frustumCulled = false; S.add(gm);
+
+  // stars, dust, sparkle trail
+  const mk = (p, c, size) => { const bg = new THREE.BufferGeometry();
+    bg.setAttribute("position", new THREE.BufferAttribute(p, 3)); bg.setAttribute("color", new THREE.BufferAttribute(c, 3));
+    const o = new THREE.Points(bg, new THREE.PointsMaterial({size, map:GT, vertexColors:true, transparent:true, depthWrite:false, fog:false, blending:THREE.AdditiveBlending}));
+    o.frustumCulled = false; S.add(o); return o; };
+  const NS = 600, sp0 = new Float32Array(NS*3), sc0 = new Float32Array(NS*3);
+  for (let i = 0; i < NS; i++) { const r = 60+Math.random()*50, a = Math.random()*6.283, b = Math.acos(2*Math.random()-1);
+    sp0.set([r*Math.sin(b)*Math.cos(a), r*Math.cos(b)*.7+20, r*Math.sin(b)*Math.sin(a)], i*3); col.setHSL(.55+Math.random()*.2, .5, .85); sc0.set([col.r, col.g, col.b], i*3); }
+  const stars = mk(sp0, sc0, .55);
+  const ND = 520, dp = new Float32Array(ND*3), dc = new Float32Array(ND*3);
+  for (let i = 0; i < ND; i++) { dp.set([(Math.random()-.5)*22, -1+Math.random()*11, 15-Math.random()*165], i*3); col.setHSL(Math.random(), .9, .75); dc.set([col.r, col.g, col.b], i*3); }
+  mk(dp, dc, .22);
+  const NB = 700, bp = new Float32Array(NB*3).fill(-999), bc = new Float32Array(NB*3), bv = new Float32Array(NB*3), bb = new Float32Array(NB*3), bl = new Float32Array(NB);
+  const bursts = mk(bp, bc, .42); let bi = 0, tnow = 0;
+  const puff = (o, n, s, life) => { for (let k = 0; k < n; k++) { const i = bi++ % NB, a = Math.random()*6.283, b = Math.random()*3.14-1.57, q = s*(.3+Math.random());
+    bp.set([o.x, o.y, o.z], i*3); bv.set([Math.cos(a)*Math.cos(b)*q, Math.sin(b)*q+s*.3, Math.sin(a)*Math.cos(b)*q], i*3);
+    bl[i] = life*(.6+Math.random()*.6); col.setHSL((tnow*.25+Math.random()*.2) % 1, .9, .66); bb.set([col.r, col.g, col.b], i*3); } };
+  const ring = new THREE.Mesh(new THREE.RingGeometry(.2, .5, 64), new THREE.MeshBasicMaterial({color:0xffffff, transparent:true, opacity:0, side:THREE.DoubleSide, blending:THREE.AdditiveBlending, depthWrite:false, fog:false}));
+  ring.rotation.x = -Math.PI/2; S.add(ring);
+
+  const st = {sp:0, x:0, y:0, mx:0, my:0, intro:0, hop:0, spin:0, ring:0, vel:0, ph:0, sh:0};
+  let opened = false, last = 0, prevSp = 0, running = false, rafId = 0;
+  addEventListener("pointermove", e => { st.mx = (e.clientX/innerWidth-.5)*2; st.my = (e.clientY/innerHeight-.5)*2; }, {passive: true});
+  const hop = () => { st.hop = 1; U.tip.getWorldPosition(v); puff(v, 60, 4, 1.4); };
+  addEventListener("pointerdown", e => { if (opened && !e.target.closest(".card,button,a")) hop(); });
+  const rs = () => { R.setSize(innerWidth, innerHeight, false); C.aspect = innerWidth/innerHeight; updateMetrics(); };
+  addEventListener("resize", rs, {passive: true}); rs();
+  const back = x => 1+2.70158*Math.pow(x-1, 3)+1.70158*Math.pow(x-1, 2), cl01 = x => Math.min(1, Math.max(0, x));
+
+  function renderFrame(now) {
+    const dt = Math.min(.05, (now-last)/1000 || .016), t = now/1000, k1 = 1-Math.exp(-3*dt); last = now; tnow = t;
+    if (opened && st.intro < 1) st.intro = Math.min(1, st.intro+dt/(calm ? .01 : 2.8));
+    const scr = cl01(curScrollY / maxScroll);
+    st.sp += (scr-st.sp)*(1-Math.exp(-2.8*dt));
+    st.vel += (Math.abs(st.sp-prevSp)/dt*LT-st.vel)*k1; prevSp = st.sp;
+    const sf = Math.min(1, st.vel/16), sp = st.sp, port = C.aspect < 1, e = 1-Math.pow(1-st.intro, 3);
+    st.ph += dt*(3.2+sf*8); st.x += (st.mx-st.x)*k1; st.y += (st.my-st.y)*k1;
+    st.hop = Math.max(0, st.hop-dt/.9); st.spin = Math.max(0, st.spin-dt/1.6); st.ring = Math.max(0, st.ring-dt/1.6);
+    const ek = (u => u*u*(3-2*u))(cl01((sp-.78)/.22)), zc = -sp*LT;
+
+    P.position.set(Math.sin(t*.7)*.35*(1-ek), 0, zc);
+    P.scale.setScalar(Math.max(0, back(cl01((st.intro-.35)/.5))));
+    U.root.rotation.y = Math.PI/2+(1-st.spin*st.spin)*6.283;
+    U.root.position.y = st.hop > 0 ? Math.sin((1-st.hop)*Math.PI)*1.1 : 0;
+    U.update(st.ph, sf, t);
+
+    const rad = (port ? 10.5 : 7.6)*(1+.12*ek)*(1+(1-e)*1.2), ang = .4+ek*2.3+st.x*.22+(1-e)*2, h = 2.6+ek*.2-st.y*.4+(1-e)*4;
+    C.position.set(P.position.x+Math.sin(ang)*rad, h, zc+Math.cos(ang)*rad);
+    C.lookAt(P.position.x, 1.5+ek*.7, zc-1.2*(1-ek));
+    C.fov = (port ? 62 : 46)+Math.min(14, st.vel*.3);
+    st.sh += ((opts.onFrame ? opts.onFrame(sp) : 0)-st.sh)*k1;
+    C.setViewOffset(innerWidth, innerHeight, 0, st.sh*innerHeight, innerWidth, innerHeight);
+    pk.position.set(P.position.x-5, 3, zc+4); cy.position.set(P.position.x+5, 2, zc-3);
+    stars.position.z = C.position.z;
+
+    gates.forEach((g, i) => g.scale.setScalar(1+Math.sin(t*2+i)*.015));
+    gd.forEach((d, i) => { gm.setMatrixAt(i, M4.compose(Ps.set(d.x, d.y+Math.sin(t+d.p)*.4, d.z), Qn.setFromEuler(Eu.set(t*.7*d.s, t*.5*d.s, 0)), Sc.setScalar(d.s))); });
+    gm.instanceMatrix.needsUpdate = true;
+
+    if (opened && st.intro > .5) { U.tip.getWorldPosition(v); puff(v, calm ? 0 : 2, .5, 1.6); U.tail.getWorldPosition(v); puff(v, calm ? 0 : 3, .4, 1.8); }
+
+    let burstsNeedUpdate = false;
+    for (let i = 0; i < NB; i++) {
+      if (bl[i] > 0) {
+        burstsNeedUpdate = true;
+        bl[i] -= dt;
+        for (let j = 0; j < 3; j++) bp[i*3+j] += bv[i*3+j]*dt;
+        bv[i*3+1] -= 1.6*dt;
+        const f = Math.min(1, bl[i]);
+        for (let j = 0; j < 3; j++) bc[i*3+j] = bb[i*3+j]*f;
+      } else if (bp[i*3+1] !== -999) {
+        bp[i*3+1] = -999;
+        burstsNeedUpdate = true;
+      }
+    }
+    if (burstsNeedUpdate) {
+      bursts.geometry.attributes.position.needsUpdate = true;
+      bursts.geometry.attributes.color.needsUpdate = true;
+    }
+
+    ring.position.set(P.position.x, .1, zc); ring.scale.setScalar(1+(1-st.ring)*30); ring.material.opacity = st.ring*.8;
+    R.render(S, C);
+  }
+
+  function step(now) {
+    if (!running) return;
+    renderFrame(now);
+    rafId = requestAnimationFrame(step);
+  }
+
+  function startLoop() {
+    if (!running && opened && document.visibilityState !== "hidden") {
+      running = true;
+      last = performance.now();
+      rafId = requestAnimationFrame(step);
+    }
+  }
+
+  function stopLoop() {
+    if (running) {
+      running = false;
+      cancelAnimationFrame(rafId);
+    }
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") stopLoop();
+    else if (opened) startLoop();
+  });
+
+  // Render a single initial frame to warm shaders
+  renderFrame(0);
+
+  return {
+    st,
+    open() {
+      opened = true;
+      st.ring = 1;
+      v.copy(P.position);
+      v.y = 2;
+      puff(v, 160, 7, 1.6);
+      updateMetrics();
+      startLoop();
+    },
+    celebrate() { st.spin = 1; for (let i = 0; i < 4; i++) setTimeout(() => { U.tip.getWorldPosition(v); v.x += (Math.random()-.5)*4; puff(v, 70, 5, 1.5); }, i*220); }
+  };
+}
+
+const goToStop = idx => {
+  const stops = document.querySelectorAll(".stop");
+  if (stops[idx]) {
+    stops[idx].scrollIntoView({ behavior: "smooth" });
+  } else {
+    scrollTo({ top: [0, maxScroll * 0.5, maxScroll][idx], behavior: "smooth" });
+  }
+};
+
+$("skip").addEventListener("click", () => goToStop(2));
+if ($("toDetails")) $("toDetails").addEventListener("click", () => goToStop(1));
+if ($("toRsvp")) $("toRsvp").addEventListener("click", () => goToStop(2));
+if ($("backToHero")) $("backToHero").addEventListener("click", () => goToStop(0));
+if ($("backToDetails")) $("backToDetails").addEventListener("click", () => goToStop(1));
+
+let G = {open(){}, celebrate(){}};
+try { if (!window.THREE) throw 0; G = init3D($("gl"), {onFrame:updatePanels}); }
+catch (e) {
+  document.body.classList.add("nogl");
+  (function l() { updatePanels(cl01(curScrollY / maxScroll)); requestAnimationFrame(l); })();
+}
+$("open").addEventListener("click", () => {
+  document.documentElement.classList.remove("lock");
+  $("gate").classList.add("gone"); document.body.classList.add("open"); G.open();
+});
+
+// ====== RSVP ======
+const form = $("form");
+form.attending.forEach(r => r.addEventListener("change", () => $("guestsWrap").hidden = form.attending.value === "No"));
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  $("send").disabled = true; $("status").textContent = "Sending…";
+  const d = new FormData(form);
+  const data = {sentAt:new Date().toISOString(), name:d.get("name"), attending:d.get("attending"), guests:d.get("attending") === "Yes" ? d.get("guests") : "0", notes:d.get("notes")};
+  try {
+    if (CONFIG.rsvpUrl) await fetch(CONFIG.rsvpUrl, {method:"POST", mode:"no-cors", body:new URLSearchParams(data)});
+    else { $("preview").hidden = false; try { const l = JSON.parse(localStorage.getItem("rsvps") || "[]"); l.push(data); localStorage.setItem("rsvps", JSON.stringify(l)); } catch (_) {} }
+    const yes = data.attending === "Yes";
+    $("tt").textContent = yes ? "Yay, see you there, " + data.name + "!" : "We’ll miss you, " + data.name + ".";
+    $("tm").textContent = yes ? "Your RSVP is in. Get ready for sparkles!" : "Thank you for letting us know.";
+    form.hidden = true; $("by").hidden = true; $("thanks").hidden = false;
+    if (yes) G.celebrate();
+  } catch (err) { $("status").textContent = "Something went wrong. Check your internet and press Send again."; $("send").disabled = false; }
+});
+</script>
+</body>
+</html>
