@@ -6,9 +6,9 @@ function doPost(e) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(["Sent at", "Name", "Attending", "Guests", "Notes"]);
+    sheet.appendRow(["Sent at", "Name", "Attending", "Adults", "Children", "Total guests", "Notes"]);
   }
   const p = e.parameter;
-  sheet.appendRow([p.sentAt, p.name, p.attending, p.guests, p.notes]);
+  sheet.appendRow([p.sentAt, p.name, p.attending, p.adults, p.children, p.guests, p.notes]);
   return ContentService.createTextOutput("ok");
 }

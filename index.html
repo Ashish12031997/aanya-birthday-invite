@@ -137,8 +137,12 @@ legend{grid-column:1/-1;padding:0;margin-bottom:.3rem;float:left;width:100%}
     <label class="pill"><input type="radio" name="attending" value="Yes" checked>Yes, we’ll be there!</label>
     <label class="pill"><input type="radio" name="attending" value="No">Sorry, can’t make it</label>
    </fieldset>
-   <label id="guestsWrap">How many are coming, including you?
-    <select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+   <div id="partySizeWrap">
+    <label id="adultsWrap">How many adults?
+     <select name="adults"><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+    <label id="childrenWrap" style="display:block;margin-top:.7rem">How many children?
+     <select name="children"><option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+   </div>
    <label>Allergies or a message (optional)<textarea name="notes"></textarea></label>
    <button class="cta" type="submit" id="send">Send RSVP ✨</button>
    <button type="button" class="nav-prev-btn" id="backToDetails" style="margin-top:.4rem;width:100%">↑ Back to party details</button>
@@ -155,10 +159,10 @@ legend{grid-column:1/-1;padding:0;margin-bottom:.3rem;float:left;width:100%}
 const CONFIG = {
   name: "Aanya",
   age: "",                         // e.g. "5" shows a "Turning 6" badge
-  start: "2026-12-25T14:00",       // party start (local time)
-  hours: 3,
-  venue: "Add venue name",
-  address: "Add street address",
+  start: "2026-12-25T16:00",       // party start (local time)
+  hours: 4,
+  venue: "Grand River Unitarian Congregation",
+  address: "299 Sydney St S, Kitchener, ON N2G 3V8",
   host: "Aanya’s family",
   rsvpBy: "2026-12-05",
   rsvpUrl: ""                      // paste your Google Apps Script web-app URL here
@@ -525,12 +529,15 @@ $("open").addEventListener("click", () => {
 
 // ====== RSVP ======
 const form = $("form");
-form.attending.forEach(r => r.addEventListener("change", () => $("guestsWrap").hidden = form.attending.value === "No"));
+form.attending.forEach(r => r.addEventListener("change", () => $("partySizeWrap").hidden = form.attending.value === "No"));
 form.addEventListener("submit", async e => {
   e.preventDefault();
   $("send").disabled = true; $("status").textContent = "Sending…";
   const d = new FormData(form);
-  const data = {sentAt:new Date().toISOString(), name:d.get("name"), attending:d.get("attending"), guests:d.get("attending") === "Yes" ? d.get("guests") : "0", notes:d.get("notes")};
+  const isYes = d.get("attending") === "Yes";
+  const adults = isYes ? Number(d.get("adults") || 0) : 0;
+  const children = isYes ? Number(d.get("children") || 0) : 0;
+  const data = {sentAt:new Date().toISOString(), name:d.get("name"), attending:d.get("attending"), adults:String(adults), children:String(children), guests:String(adults + children), notes:d.get("notes")};
   try {
     if (CONFIG.rsvpUrl) await fetch(CONFIG.rsvpUrl, {method:"POST", mode:"no-cors", body:new URLSearchParams(data)});
     else { $("preview").hidden = false; try { const l = JSON.parse(localStorage.getItem("rsvps") || "[]"); l.push(data); localStorage.setItem("rsvps", JSON.stringify(l)); } catch (_) {} }
